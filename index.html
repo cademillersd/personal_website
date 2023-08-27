@@ -1,8 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
-
 <style>
-  /* Reset some default styles */
+
 body, h1, h2, p, ul, li {
     margin: 0;
     padding: 0;
@@ -10,7 +8,6 @@ body, h1, h2, p, ul, li {
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #F7F7F7;
 }
 
 header {
@@ -20,11 +17,6 @@ header {
     padding: 20px;
     background-color: #1C1C1C;
     color: #FFFFFF;
-}
-
-.logo {
-    font-size: 24px;
-    font-weight: bold;
 }
 
 nav ul {
@@ -41,35 +33,36 @@ nav ul li a {
     text-decoration: none;
 }
 
-.hero {
-    background-image: url('hero-image.jpg');
-    background-size: cover;
-    color: #FFFFFF;
+.section {
+    padding: 50px 0;
     text-align: center;
-    padding: 100px 0;
 }
 
-.hero h1 {
+.section h2 {
     font-size: 36px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
-.hero p {
-    font-size: 18px;
-    margin-bottom: 30px;
+.skills-list {
+    list-style: none;
+    padding: 0;
 }
 
-.cta-button {
+.skills-list li {
     display: inline-block;
+    margin: 5px;
+    padding: 5px 10px;
     background-color: #007BFF;
     color: #FFFFFF;
-    padding: 10px 20px;
     border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
 }
 
-/* Add styling for other sections as needed */
+.project {
+    background-color: #F7F7F7;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 5px;
+}
 
 footer {
     background-color: #1C1C1C;
@@ -78,91 +71,65 @@ footer {
     padding: 20px 0;
 }
 
-footer ul li {
-    display: inline;
-    margin: 0 10px;
-}
-
-.social-icons {
-    margin: 20px 0;
-}
-
-.social-icons a {
-    color: #FFFFFF;
-    font-size: 24px;
-    margin: 0 10px;
-    text-decoration: none;
-}
-/* Add responsive styling here */
-
 </style>
+
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <title>TechXperience</title>
+    <title>Your Name - Portfolio</title>
 </head>
 <body>
     <header>
-        <div class="logo">TechXperience</div>
+        <h1>Your Name</h1>
         <nav>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">News</a></li>
-                <li><a href="#">Reviews</a></li>
-                <li><a href="#">Videos</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <section class="hero">
-        <h1>Discover the Latest in Tech</h1>
-        <p>Your source for cutting-edge technology news and reviews.</p>
-        <a href="#" class="cta-button">Explore Now</a>
+    <section id="about" class="section">
+        <h2>About Me</h2>
+        <p>Write a brief introduction about yourself here.</p>
     </section>
 
-    <section class="latest-news">
-        <!-- News article items will be dynamically generated here -->
+    <section id="skills" class="section">
+        <h2>Skills</h2>
+        <ul class="skills-list">
+            <li>Web Development</li>
+            <li>UI/UX Design</li>
+            <li>JavaScript</li>
+            <li>React</li>
+            <li>Python</li>
+            <li>...and more</li>
+        </ul>
     </section>
 
-    <section class="featured-reviews">
-        <!-- Featured reviews carousel will be dynamically generated here -->
+    <section id="projects" class="section">
+        <h2>Projects</h2>
+        <div class="project">
+            <h3>Project 1</h3>
+            <p>Description of Project 1.</p>
+        </div>
+        <div class="project">
+            <h3>Project 2</h3>
+            <p>Description of Project 2.</p>
+        </div>
+        <!-- Add more project entries here -->
     </section>
 
-    <section class="video-gallery">
-        <!-- Video thumbnails will be dynamically generated here -->
-    </section>
-
-    <section class="infographics">
-        <!-- Interactive infographics will be placed here -->
-    </section>
-
-    <section class="newsletter">
-        <h2>Subscribe to Our Newsletter</h2>
-        <p>Get exclusive insights and early access to tech trends.</p>
-        <form>
-            <input type="email" placeholder="Enter your email">
-            <button type="submit">Subscribe</button>
-        </form>
+    <section id="contact" class="section">
+        <h2>Contact Me</h2>
+        <p>You can reach me at <a href="mailto:your@email.com">your@email.com</a>.</p>
     </section>
 
     <footer>
-        <div class="footer-links">
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">News</a></li>
-                <li><a href="#">Reviews</a></li>
-                <li><a href="#">Videos</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </div>
-        <div class="social-icons">
-            <!-- Social media icons will be placed here -->
-        </div>
-        <p>&copy; 2023 TechXperience. All rights reserved.</p>
+        <p>&copy; 2023 Your Name. All rights reserved.</p>
     </footer>
 </body>
 </html>
