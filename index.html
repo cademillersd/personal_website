@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Favicon -->
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+<meta name="generator" content="Astro v1.4.3">
+
+<!-- Primary Meta Tags -->
+<link rel="canonical" href="https://cademillersd.github.io/personal_website/">
+<title>Portfolio - Cade Miller</title>
+<meta name="title" content="Portfolio - Cade Miller">
+<meta name="description" content="a Data Theory Student at The University of California, Los Angeles.">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://cademillersd.github.io/personal_website/">
+<meta property="og:title" content="Portfolio - Cade Miller">
+<meta property="og:description" content="a Data Theory Student at The University of California, Los Angeles.">
+<meta property="og:image" content="https://sanjeev.one//assets/images/profile.png">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://cademillersd.github.io/personal_website/">
+<meta property="twitter:title" content="Portfolio - Sanjeev Chauhan">
+<meta property="twitter:description" content="a Data Theory Student at The University of California, Los Angeles.">
+<meta property="twitter:image" content="https://sanjeev.one//assets/images/profile.png">
+
+<!-- preload assests -->
+<link rel="preload" href="https://github.com/cademillersd/personal_website/blob/main/fonts/Inter-Regular.ttf" as="font" crossorigin>
+<link rel="preload" href="https://github.com/cademillersd/personal_website/blob/main/fonts/Outfit-SemiBold.ttf" as="font" crossorigin>
+
+  <link rel="stylesheet" href="https://github.com/cademillersd/personal_website/blob/main/source/index_source.html" /></head>
+
+  <body>
+    <header class="container flex items-center justify-between h-[80px] sm:h-[123px]">
+  <a class="text-2xl dark:text-light font-semibold dark:font-semibold font-outfit" href="/">SC.
+  </a>
+  <a aria-label="Social Media" href="/assets/docs/resume.pdf" target="_blank" class="footer-icons">
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+      <polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline>
+    </svg>
+  </a>
+  <nav>
+    <ul class="flex items-center">
+      <li>
+        <a class="p-4 dark:text-light block text-lg" href="/projects">Projects</a>
+      </li>
+      <!-- <li>
+        <a class="p-4 dark:text-light block text-lg" href="/contact">Contact</a>
+      </li> -->
+      <li>
+        <button aria-label="theme-button" id="theme-button" class="dark:text-light rounded-lg p-4 ml-2 bg-slate-100 dark:bg-[#202020]"></button>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<script>
+  const moon = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
+  const sun = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sun"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`;
+  const themeButton = document.getElementById("theme-button");
+  const browserTheme = document.querySelector('[name="theme-color"]');
+  let isDark;
+  const theme = (() => {
+    if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+      return localStorage.getItem("theme");
+    }
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      return "dark";
+    }
+    return "light";
+  })();
+
+  if (theme === "light") {
+    document.documentElement.setAttribute("data-theme", "light");
+    isDark = true;
+    themeButton.innerHTML = moon;
+    browserTheme.content = "#FFFFFF";
+  } else {
+    document.documentElement.setAttribute("data-theme", "dark");
+    isDark = false;
+    themeButton.innerHTML = sun;
+    browserTheme.content = "#111111";
+  }
+  window.localStorage.setItem("theme", theme);
+
+  const darkModeHandler = () => {
+    if (isDark) {
+      document.documentElement.setAttribute("data-theme", "dark");
+      localStorage.theme = "dark";
+      isDark = false;
+      themeButton.innerHTML = sun;
+      browserTheme.content = "#111111";
+    } else {
+      document.documentElement.setAttribute("data-theme", "light");
+      localStorage.theme = "light";
+      isDark = true;
+      themeButton.innerHTML = moon;
+      browserTheme.content = "#FFFFFF";
+    }
+  };
+
+  themeButton.addEventListener("click", darkModeHandler);
+</script>
+<main class="container">
+  <section>
+  <p class="dark:text-light mt-[1px]">Hey, I’m</p>
+  <h1>Cade Miller</h1>
+  <p class="dark:text-light text-lg mb-16">
+    a Data Theory Student at The University of California, Los Angeles.
+  
+  </p>
+</section><section class="flex items-start justify-between flex-col sm:flex-row dark:text-light">
+  <h2 class="w-[15rem] mt-16">EXPERIENCE</h2>
+  <div class="w-full">
+    <div class="my-16">
+          <div class="flex justify-between items-center flex-wrap">
+            <h3 class="text-xl font-semibold">Data Scientist Intern</h3>
+            <p class="text-sm dark:text-gray">
+              June 2023 - August 2023
+            </p>
+          </div>
+          <p class="text-sm mt-3 text-blue">Stanford Linear Accelerator Center (SLAC)</p>
+          <ul class="mt-3">
+            <li class="dark:text-gray">During my internship, I undertook a multifaceted role in 
+                enhancing the Linac Coherent Light Source (LCLS) system. A significant portion of
+                my contribution involved a comprehensive redesign of the Input-Output Controller (IOC) 
+                database, which included crafting Python scripts for data extraction from the new database 
+                and seamlessly integrating these scripts into the existing codebase, previously reliant 
+                on the older database. My responsibilities extended to streamlining the maintenance 
+                of LCLS magnet controls through the utilization of Oracle databases, a task for which 
+                I authored efficient Python scripts. My commitment to clear and accessible documentation 
+                was exemplified through the creation and publication of detailed documentation utilizing Sphinx.
+                Furthermore, I combined my programming skills and knowledge of the Experimental Physics 
+                Industrial Control System (EPICS) to design and construct a user-friendly graphical user 
+                interface (GUI) using Python Display Manager (PyDM), empowering users to monitor the water-cooling
+                statuses of EPICS computers effortlessly. This internship enabled me to amalgamate my technical skillsets
+                with practical application in the realm of computer science, experimental physics, and control systems.</li>
+          </ul>
+        </div><div class="my-16">
+          <div class="flex justify-between items-center flex-wrap">
+            <h3 class="text-xl font-semibold">Soccer Referee: Youth, Collegiate, Semi-Professional</h3>
+            <p class="text-sm dark:text-gray">
+              September 2017 - Present
+            </p>
+          </div>
+          <p class="text-sm mt-3 text-blue">U.S. Soccer Federation (USSF)</p>
+          <ul class="mt-3">
+            <li class="dark:text-gray">Commencing my journey as a soccer referee at the age of 11, 
+                I swiftly grew into a seasoned official with a noteworthy range of experiences. From officiating 
+                adult, semi-professional Women's Premier Soccer League (WPSL) matches to U-20 United Soccer 
+                League (USL) games, I displayed a profound understanding of the game's dynamics and rules. 
+                My proficiency in officiating caught the eye of national referee coaches, leading me to be personally chosen 
+                for prestigious national youth competitions such as MLS Next, Surf Cup, Cal South State Cup, 
+                Elite National Premier League national playoffs, and the Elite Clubs National League National 
+                Championships. These selections not only testified to my dedication but also 
+                highlighted my capability to maintain fairness and accuracy in high-stakes environments. My 
+                enduring commitment to the art of refereeing has granted me invaluable insights into 
+                the professional work environments, while also honing my leadership and decision-making skills.</li>
+          </ul>
+        </div>
+  </div>
+</section><section class="flex items-start justify-between flex-col sm:flex-row dark:text-light">
+  <h2 class="w-[15rem] mt-16">EDUCATION</h2>
+  <div class="w-full">
+    <div class="my-16">
+          <div class="flex justify-between items-center flex-wrap">
+            <h3 class="text-xl font-semibold">University of California, Los Angeles (UCLA)</h3>
+            <p class="text-sm dark:text-gray">
+              2023 - 2025 (expected)
+            </p>
+          </div>
+          <p class="text-sm mt-3 text-blue">Los Angeles, CA</p>
+          <ul class="mt-3">
+            <li class="dark:text-gray">Data Theory Major. Heavy emphasis on mathematics, statistics, data science, and machine learning.</li>
+          </ul>
+        </div><div class="my-16">
+          <div class="flex justify-between items-center flex-wrap">
+            <h3 class="text-xl font-semibold">San Diego Miramar College</h3>
+            <p class="text-sm dark:text-gray">
+              2022 - 2023
+            </p>
+          </div>
+          <p class="text-sm mt-3 text-blue">San Diego, CA</p>
+          <ul class="mt-3">
+            <li class="dark:text-gray">GPA: 3.88, Major GPA: 4.0, A.S. in Mathematics, Relevant Coursework: 
+                Multivariable Calculus, Linear Algebra, Differential Equations, C++ Programming, Principles 
+                of Information Systems
+            </li>
+          </ul>
+        </div><div class="my-16">
+            <div class="flex justify-between items-center flex-wrap">
+              <h3 class="text-xl font-semibold">Rancho Bernardo High School</h3>
+              <p class="text-sm dark:text-gray">
+                2018 - 2022
+              </p>
+            </div>
+            <p class="text-sm mt-3 text-blue">San Diego, CA</p>
+            <ul class="mt-3">
+              <li class="dark:text-gray">GPA: 3.79 UW, 4.11 W, AP Coursework: AP Calc AB, AP Calc BC, 
+                AP Physics (Mechanics), AP Computer Science Principles, AP Environmental Science, 
+                AP United States History, AP United States Government and Politics
+              </li>
+            </ul>
+          </div>
+  </div>
+</section><section>
+    <h2 class="w-[15rem] mt-16">Skills</h2>
+    <div class="w-full">
+      <div class="my-16">
+            <div class="flex justify-between items-center flex-wrap">
+              <h3 class="text-xl font-semibold">Technical Skills</h3>
+            </div>
+            <ul class="mt-3">
+              <li class="dark:text-gray">Python, C++, SQL, HTML, Sphinx, Git, Python Display Manager (PyDM), 
+                Experimental Physics Industrial Control System (EPICS), PyQt, Linux/Unix, Bash Scripting
+              </li>
+            </ul>
+          </div><div class="my-16">
+            <div class="flex justify-between items-center flex-wrap">
+              <h3 class="text-xl font-semibold">Non-Technical Skills</h3>
+            <ul class="mt-3">
+              <li class="dark:text-gray">GPA: 3.88, Major GPA: 4.0, A.S. in Mathematics, Relevant Coursework: 
+                  Multivariable Calculus, Linear Algebra, Differential Equations, C++ Programming, Principles 
+                  of Information Systems
+              </li>
+            </ul>
+          </div>
+    </div>
+    </section><section>
+        <h2 class="w-[15rem] dark:text-light mt-16">FEATURE PROJECTS</h2>
+        <div class="grid md:grid-cols-2 grid-cols-1 gap-4 my-16">
+  <article class="w-full max-h-[25rem] overflow-hidden relative group">
+  <div class="flex items-center absolute right-4 top-4 z-10">
+    <a href="https://github.com/AutoGolfCart" class="text-white p-3 bg-black/50 rounded-full backdrop-blur-md" aria-label="Social Media" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github">
+            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+          </svg>
+        </a>
+
+    <a href="https://golfcart.sanjeev.one/" class="text-white p-3 bg-black/50 rounded-full backdrop-blur-md ml-1" aria-label="Social Media" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link-2">
+            <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+            <line x1="8" y1="12" x2="16" y2="12"></line>
+          </svg>
+        </a>
+  </div>
+  <img src="/assets/images/cart.jpeg" class="w-full h-auto scale-100 hover:scale-110 transition duration-[1.5s]" loading="lazy" width="100%" height="100%" alt="featureImage">
+  <div class="absolute w-full bottom-0 left-0 backdrop-blur-md dark:text-white text-white bg-black/50 p-4 translate-y-[100%] group-hover:translate-y-0 transition duration-700">
+    <h3 class="mr-2 text-xl">Vehicle-Agnostic Control Systems for Autonomous Vehicle Fleets</h3>
+  </div>
+</article><article class="w-full max-h-[25rem] overflow-hidden relative group">
+  <div class="flex items-center absolute right-4 top-4 z-10">
+    
+
+    <a href="https://golfcart.sanjeev.one/" class="text-white p-3 bg-black/50 rounded-full backdrop-blur-md ml-1" aria-label="Social Media" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link-2">
+            <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+            <line x1="8" y1="12" x2="16" y2="12"></line>
+          </svg>
+        </a>
+  </div>
+  <img src="/assets/images/drone.jpeg" class="w-full h-auto scale-100 hover:scale-110 transition duration-[1.5s]" loading="lazy" width="100%" height="100%" alt="featureImage">
+  <div class="absolute w-full bottom-0 left-0 backdrop-blur-md dark:text-white text-white bg-black/50 p-4 translate-y-[100%] group-hover:translate-y-0 transition duration-700">
+    <h3 class="mr-2 text-xl">Rebuilt DJI SPARK Drone</h3>
+  </div>
+</article><article class="w-full max-h-[25rem] overflow-hidden relative group">
+  <div class="flex items-center absolute right-4 top-4 z-10">
+    
+
+    <a href="https://golfcart.sanjeev.one/" class="text-white p-3 bg-black/50 rounded-full backdrop-blur-md ml-1" aria-label="Social Media" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link-2">
+            <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+            <line x1="8" y1="12" x2="16" y2="12"></line>
+          </svg>
+        </a>
+  </div>
+  <img src="/assets/images/robot.jpeg" class="w-full h-auto scale-100 hover:scale-110 transition duration-[1.5s]" loading="lazy" width="100%" height="100%" alt="featureImage">
+  <div class="absolute w-full bottom-0 left-0 backdrop-blur-md dark:text-white text-white bg-black/50 p-4 translate-y-[100%] group-hover:translate-y-0 transition duration-700">
+    <h3 class="mr-2 text-xl">FRC robotics</h3>
+  </div>
+</article>
+</div>
+      </section>
+</main>
+<footer class="container flex sm:flex-row flex-col justify-between items-center mb-8 sm:mb-4">
+  <p class="dark:text-light text-right my-8">
+    Developed by <strong>Sanjeev Chauhan</strong>
+  </p>
+  <div class="grid grid-cols-4 gap-5">
+    <a aria-label="Social Media" href="/assets/docs/resume.pdf" target="_blank" class="footer-icons">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+        <polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline>
+      </svg>
+    </a>
+    <!--
+    <a
+      aria-label="Social Media"
+      href={info.socialMedia.twitter}
+      target="_blank"
+      class="footer-icons"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="18"
+        height="18"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="feather feather-twitter"
+        ><path
+          d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"
+        ></path>
+      </svg>
+    </a>  -->
+    <a aria-label="Social Media" href="https://github.com/cademillersd" target="_blank" class="footer-icons">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+      </svg>
+    </a>
+    <a aria-label="Social Media" href="https://www.linkedin.com/in/cademillersd/" target="_blank" class="footer-icons">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle>
+      </svg>
+    </a>
+    <a aria-label="Social Media" href="cademiller@g.ucla.edu" target="_blank" class="footer-icons">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline>
+      </svg>
+    </a>
+    <!--<a
+      aria-label="Social Media"
+      href={info.socialMedia.facebook}
+      target="_blank"
+      class="footer-icons"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="18"
+        height="18"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="feather feather-facebook"
+        ><path
+          d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+        ></path>
+      </svg>
+    </a> -->
+  </div>
+</footer>
+  </body></html>
